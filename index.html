@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Professional Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Poppins","Noto Sans Bengali",sans-serif;background:#f5f7fb;color:#263238;line-height:1.7}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 2px 15px rgba(0,0,0,.07)}
+.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:800;color:#2563eb}
+.nav-links{display:flex;gap:24px;font-size:14px;font-weight:600}
+.nav-links a:hover{color:#2563eb}
+.hero{padding:85px 0 70px;background:linear-gradient(135deg,#eef5ff,#fff)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.badge{display:inline-block;background:#e8f0ff;color:#2563eb;padding:7px 14px;border-radius:30px;font-size:13px;font-weight:700;margin-bottom:15px}
+h1{font-size:52px;line-height:1.15;margin-bottom:12px;color:#111827}
+.hero h2{font-size:22px;color:#2563eb;margin-bottom:18px}
+.hero p{color:#64748b;max-width:650px}
+.btns{display:flex;gap:12px;margin-top:25px;flex-wrap:wrap}
+.btn{padding:11px 20px;border-radius:8px;font-weight:700;font-size:14px;border:1px solid #2563eb}
+.btn.primary{background:#2563eb;color:#fff}
+.btn.secondary{color:#2563eb;background:#fff}
+.profile-photo{width:310px;height:310px;border-radius:50%;object-fit:cover;border:10px solid #fff;box-shadow:0 15px 45px rgba(37,99,235,.2);margin:auto;display:block;background:#e5e7eb}
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:45px}
+.section-title span{color:#2563eb;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px}
+.section-title h2{font-size:34px;margin-top:5px;color:#111827}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 30px rgba(15,23,42,.06)}
+.info-list{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+.info-item small{display:block;color:#94a3b8}.info-item strong{font-size:14px}
+.services-grid,.works-grid,.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.service-icon{font-size:28px;margin-bottom:10px}
+.card h3{margin-bottom:8px;color:#111827}
+.card p{color:#64748b;font-size:14px}
+.timeline{position:relative;max-width:850px;margin:auto}
+.timeline-item{background:#fff;padding:22px 25px;margin:0 0 20px;border-left:4px solid #2563eb;border-radius:0 12px 12px 0;box-shadow:0 7px 25px rgba(15,23,42,.06)}
+.timeline-item .year{font-size:13px;font-weight:800;color:#2563eb}
+.skill{margin-bottom:18px}
+.skill-head{display:flex;justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:7px}
+.bar{height:9px;background:#e5e7eb;border-radius:20px;overflow:hidden}
+.fill{height:100%;background:#2563eb;border-radius:20px}
+.work-img{width:100%;height:190px;object-fit:cover;border-radius:12px;margin-bottom:15px;background:#e5e7eb}
+.quote{font-size:15px;color:#475569;font-style:italic;margin-bottom:18px}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px}
+.contact-item{display:flex;gap:14px;margin:18px 0}
+.contact-icon{width:42px;height:42px;border-radius:10px;background:#eaf1ff;color:#2563eb;display:grid;place-items:center;font-weight:800}
+form input,form textarea{width:100%;padding:13px 15px;margin-bottom:14px;border:1px solid #e2e8f0;border-radius:8px;font-family:inherit;outline:none}
+form input:focus,form textarea:focus{border-color:#2563eb}
+form textarea{min-height:130px;resize:vertical}
+footer{background:#111827;color:#cbd5e1;text-align:center;padding:25px;font-size:13px}
+.loading{text-align:center;padding:50px;color:#64748b}
+@media(max-width:850px){
+ .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+ .hero{text-align:center}.hero p{margin:auto}.btns{justify-content:center}
+ h1{font-size:40px}.profile-photo{width:240px;height:240px}
+ .services-grid,.works-grid,.testimonials-grid{grid-template-columns:1fr}
+ .nav-links{gap:10px;font-size:11px}.nav-inner{height:auto;padding:15px 0}
+}
+</style>
+</head>
+<body>
+<div id="app"><div class="loading">ওয়েবসাইটের তথ্য লোড হচ্ছে...</div></div>
+
+<script>
+const esc = s => String(s ?? '').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+const rows = a => (a||[]).filter(x=>Object.values(x).some(v=>String(v??'').trim()!==''));
+
+function render(data){
+  const p=data.profile||{};
+  const services=rows(data.services), exp=rows(data.experience), edu=rows(data.education);
+  const skills=rows(data.skills), works=rows(data.works), tests=rows(data.testimonials);
+  const contact=data.contact||{};
+  document.title=esc(p.name||'My Professional Profile');
+
+  document.getElementById('app').innerHTML=`
+  <nav><div class="container nav-inner">
+    <a class="logo" href="#home">${esc(p.name||'My Profile')}</a>
+    <div class="nav-links">
+      <a href="#about">About</a><a href="#services">Services</a><a href="#resume">Resume</a>
+      <a href="#skills">Skills</a><a href="#works">Works</a><a href="#contact">Contact</a>
+    </div>
+  </div></nav>
+
+  <section class="hero" id="home"><div class="container hero-grid">
+    <div>
+      <span class="badge">${esc(p.badge||'WELCOME')}</span>
+      <h1>${esc(p.name||'Your Name')}</h1>
+      <h2>${esc(p.title||'Professional')}</h2>
+      <p>${esc(p.hero_text||'আপনার পেশাগত পরিচিতি এখানে লিখুন।')}</p>
+      <div class="btns"><a class="btn primary" href="#contact">Contact Me</a><a class="btn secondary" href="#about">About Me</a></div>
+    </div>
+    <div><img class="profile-photo" src="${esc(p.photo||'https://via.placeholder.com/500')}" onerror="this.src='https://via.placeholder.com/500'"></div>
+  </div></section>
+
+  <section id="about"><div class="container"><div class="section-title"><span>About Me</span><h2>আমার সম্পর্কে</h2></div>
+    <div class="about-grid"><div class="card"><p>${esc(p.about||'আপনার সম্পর্কে বিস্তারিত তথ্য এখানে লিখুন।')}</p></div>
+    <div class="card"><div class="info-list">
+      <div class="info-item"><small>Age</small><strong>${esc(p.age)}</strong></div>
+      <div class="info-item"><small>Residence</small><strong>${esc(p.residence)}</strong></div>
+      <div class="info-item"><small>Occupation</small><strong>${esc(p.occupation)}</strong></div>
+      <div class="info-item"><small>Address</small><strong>${esc(p.address)}</strong></div>
+      <div class="info-item"><small>Email</small><strong>${esc(p.email)}</strong></div>
+      <div class="info-item"><small>Phone</small><strong>${esc(p.phone)}</strong></div>
+    </div></div></div>
+  </div></section>
+
+  <section id="services"><div class="container"><div class="section-title"><span>What I Do</span><h2>My Services</h2></div>
+    <div class="services-grid">${services.map(s=>`<div class="card"><div class="service-icon">${esc(s.icon||'★')}</div><h3>${esc(s.title)}</h3><p>${esc(s.description)}</p></div>`).join('')}</div>
+  </div></section>
+
+  <section id="resume"><div class="container"><div class="section-title"><span>My Journey</span><h2>Resume</h2></div>
+    <div class="timeline">${exp.map(x=>`<div class="timeline-item"><div class="year">${esc(x.year)}</div><h3>${esc(x.title)}</h3><p><b>${esc(x.company)}</b></p><p>${esc(x.description)}</p></div>`).join('')}
+    ${edu.map(x=>`<div class="timeline-item"><div class="year">${esc(x.year)}</div><h3>${esc(x.title)}</h3><p><b>${esc(x.institute)}</b></p><p>${esc(x.description)}</p></div>`).join('')}</div>
+  </div></section>
+
+  <section id="skills"><div class="container"><div class="section-title"><span>My Ability</span><h2>Skills</h2></div>
+    <div class="card" style="max-width:850px;margin:auto">${skills.map(s=>`<div class="skill"><div class="skill-head"><span>${esc(s.name)}</span><span>${esc(s.percent)}%</span></div><div class="bar"><div class="fill" style="width:${Math.min(100,Math.max(0,Number(s.percent)||0))}%"></div></div></div>`).join('')}</div>
+  </div></section>
+
+  <section id="works"><div class="container"><div class="section-title"><span>Portfolio</span><h2>My Works</h2></div>
+    <div class="works-grid">${works.map(w=>`<div class="card"><img class="work-img" src="${esc(w.image||'https://via.placeholder.com/700x400')}" onerror="this.src='https://via.placeholder.com/700x400'"><h3>${esc(w.title)}</h3><p>${esc(w.category)}</p></div>`).join('')}</div>
+  </div></section>
+
+  <section><div class="container"><div class="section-title"><span>Clients</span><h2>Testimonials</h2></div>
+    <div class="testimonials-grid">${tests.map(t=>`<div class="card"><div class="quote">“${esc(t.quote)}”</div><h3>${esc(t.name)}</h3><p>${esc(t.role)}</p></div>`).join('')}</div>
+  </div></section>
+
+  <section id="contact"><div class="container"><div class="section-title"><span>Get In Touch</span><h2>Contact Me</h2></div>
+    <div class="contact-grid"><div class="card">
+      <p>${esc(contact.description||'যোগাযোগ করতে নিচের তথ্য ব্যবহার করুন।')}</p>
+      <div class="contact-item"><div class="contact-icon">A</div><div><small>Address</small><br><b>${esc(contact.address||p.address)}</b></div></div>
+      <div class="contact-item"><div class="contact-icon">E</div><div><small>Email</small><br><b>${esc(contact.email||p.email)}</b></div></div>
+      <div class="contact-item"><div class="contact-icon">P</div><div><small>Phone</small><br><b>${esc(contact.phone||p.phone)}</b></div></div>
+    </div>
+    <div class="card"><form onsubmit="sendMessage(event)">
+      <input id="name" required placeholder="Full Name"><input id="email" type="email" required placeholder="Email Address">
+      <textarea id="message" required placeholder="Write your message..."></textarea><button class="btn primary" type="submit">Send Message</button>
+      <div id="formMsg" style="margin-top:12px;font-size:13px"></div>
+    </form></div></div>
+  </div></section>
+  <footer>© ${new Date().getFullYear()} ${esc(p.name||'My Profile')}. All Rights Reserved.</footer>`;
+}
+
+function sendMessage(e){
+  e.preventDefault();
+  const msg=document.getElementById('formMsg');
+  msg.textContent='Message পাঠানো হচ্ছে...';
+  google.script.run.withSuccessHandler(r=>{msg.textContent=r||'Message sent successfully.';e.target.reset();})
+    .withFailureHandler(err=>msg.textContent='সমস্যা হয়েছে: '+err.message)
+    .saveMessage({name:document.getElementById('name').value,email:document.getElementById('email').value,message:document.getElementById('message').value});
+}
+google.script.run.withSuccessHandler(render).withFailureHandler(e=>document.getElementById('app').innerHTML='<div class="loading">তথ্য লোড হয়নি: '+esc(e.message)+'</div>').getSiteData();
+</script>
+</body>
+</html>
